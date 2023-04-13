@@ -2,11 +2,14 @@ package com.example.jpa_lab_2.service;
 
 import com.example.jpa_lab_2.domain.entity.Employee;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface EmployeeService {
 
-    void findAll();
+    List<Employee> findAll();
 
-    void findOne(long id);
+    Optional<Employee> findOne(long id);
 
     void save(Employee employee);
 

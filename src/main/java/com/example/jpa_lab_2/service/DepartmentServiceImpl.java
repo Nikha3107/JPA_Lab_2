@@ -3,7 +3,9 @@ package com.example.jpa_lab_2.service;
 import com.example.jpa_lab_2.domain.entity.Employee;
 import com.example.jpa_lab_2.domain.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
