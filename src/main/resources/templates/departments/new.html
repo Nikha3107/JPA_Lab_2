@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/departments/new}" th:object="${department}">
+    <label for="firstName">Название отдела: </label>
+    <input type="text" id="firstName" th:field="*{name}">
+    <br>
+    <label for="numOfEmployees">Количество сотрудников: </label>
+    <input type="text" id="numOfEmployees" th:field="*{numOfEmployees}">
+    <br>
+    <label for="rooms">Список комнат: </label>
+    <input type="text" id="rooms" th:field="*{rooms}">
+    <br>
+<!--    <label for="departmentHead">Начальник: </label>-->
+<!--    <input type="text" id="departmentHead" th:field="*{departmentHead}">-->
+<!--    <br>-->
+    <input type="submit" value="Добавить запись о новом отделе">
+</form>
+</body>
+</html>

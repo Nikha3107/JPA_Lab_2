@@ -5,10 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<div th:each="em : ${employees}">
-    <a th:text="em.getFirstName"></a>
+<div th:each="employee : ${employees}">
+    <a th:href="@{/employees/{id}(id = ${employee.getId()})}" th:text="${employee.getFirstName()+' '+employee.getLastName}">employee</a>
 </div>
-
+<br>
+<hr>
+<a href="/employees/new">Добавить Работника</a>
+<a href="/">Назад</a>
 
 
 </body>

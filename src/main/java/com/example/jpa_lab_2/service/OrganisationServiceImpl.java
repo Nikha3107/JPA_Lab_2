@@ -1,9 +1,12 @@
 package com.example.jpa_lab_2.service;
 
 import com.example.jpa_lab_2.domain.entity.Employee;
+import com.example.jpa_lab_2.domain.entity.Organisation;
 import com.example.jpa_lab_2.domain.repository.OrganisationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrganisationServiceImpl implements OrganisationService {
@@ -12,27 +15,27 @@ public class OrganisationServiceImpl implements OrganisationService {
     OrganisationRepository organisationRepository;
 
     @Override
-    public void findAll() {
+    public List<Organisation> findAll() {
+        return null;
+    }
+
+    @Override
+    public Organisation findOne(long id) {
+        return null;
+    }
+
+    @Override
+    public void save(Organisation organisation) {
 
     }
 
     @Override
-    public void findOne(long id) {
+    public void update(long id, Organisation organisation) {
 
     }
 
     @Override
-    public void save(Employee employee) {
-
-    }
-
-    @Override
-    public void update(long id, Employee employee) {
-
-    }
-
-    @Override
-    public void delete(Employee employee) {
+    public void delete(Organisation organisation) {
 
     }
 }

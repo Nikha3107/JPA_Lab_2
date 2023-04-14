@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:text="${department.getName()}" />
+<div th:text="${department.getNumOfEmployees()}" />
+<div th:text="${department.getRooms()}" />
+<div th:if="${department.getDepartmentHead() == null}">
+    <p>Начальник отдела не назначен</p>
+</div>
+<div th:if="${department.getDepartmentHead() != null}">
+    <a th:href="@{/employees/{id}(id=${department.getDepartmentHead().getId()}) }" th:text="${department.getDepartmentHead().getFirstName()+' '+department.getDepartmentHead().getLastName()}" />
+
+</div>
+<br>
+<a th:href="@{/departments/{id}/edit(id=${department.getId()})}">Редактировать данные об отделе</a>
+<br>
+<form th:method="DELETE" th:action="@{/departments/{id}(id=${department.getId()})}">
+    <input type="submit" value="Удалить отдел">
+</form>
+<a href="/departments">Назад</a>
+</body>
+</html>

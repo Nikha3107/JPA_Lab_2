@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/employees/{id}/edit(id=${employee.getId()})}" th:object="${employee}">
+    <label for="firstName">Имя: </label>
+    <input type="text" id="firstName" th:field="*{firstName}">
+    <br>
+    <label for="lastName">Фамилия: </label>
+    <input type="text" id="lastName" th:field="*{lastName}">
+    <br>
+    <label for="address">Адресс: </label>
+    <input type="text" id="address" th:field="*{address}">
+    <br>
+    <!--    <label for="birthday">День рождения: </label>-->
+    <!--    <input type="text" id="birthday" th:field="*{birthday}">-->
+    <!--    <br>-->
+    <label for="position">Должность: </label>
+    <input type="text" id="position" th:field="*{position}">
+    <br>
+    <input type="submit" value="Обновить данные о работнике">
+</form>
+</body>
+</html>

@@ -1,17 +1,21 @@
 package com.example.jpa_lab_2.service;
 
+import com.example.jpa_lab_2.domain.entity.Department;
 import com.example.jpa_lab_2.domain.entity.Employee;
+import com.example.jpa_lab_2.domain.entity.Organisation;
+
+import java.util.List;
 
 public interface OrganisationService {
 
-    void findAll();
+    List<Organisation> findAll();
 
-    void findOne(long id);
+    Organisation findOne(long id);
 
-    void save(Employee employee);
+    void save(Organisation organisation);
 
-    void update(long id, Employee employee);
+    void update(long id, Organisation organisation);
 
-    void delete(Employee employee);
+    void delete(Organisation organisation);
 
 }

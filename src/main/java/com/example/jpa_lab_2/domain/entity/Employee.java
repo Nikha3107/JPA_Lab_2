@@ -27,6 +27,7 @@ public class Employee {
 
     Calendar birthday;
 
-    String position;
+    @Enumerated(EnumType.STRING)
+    Position position;
 
 }

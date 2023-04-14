@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="department : ${departments}">
+    <a th:href="@{/departments/{id}(id = ${department.getId()})}" th:text="${department.getName }">department</a>
+</div>
+<br>
+<hr>
+<a href="/departments/new">Добавить Отдел</a>
+<a href="/">Назад</a>
+
+
+</body>
+</html>

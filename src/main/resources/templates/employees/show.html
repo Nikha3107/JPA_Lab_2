@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-
+<div th:text="${employee.getFirstName()+' '+employee.getLastName()}" id="name"/>
+<label for="address" ></label>
+<div th:text="${employee.getAddress()}" id="address"/>
+<!--<a th:href="@{/departments/{id}(id = ${departmentId})}" th:text="${employee.getDepartment().getName()}"></a>-->
+<div th:text="${employee.getBirthday()}" />
+<div th:text="${employee.getPosition().getDisplayName()}" />
+<br>
+<a th:href="@{/employees/{id}/edit(id=${employee.getId()})}">Редактировать данные сотрудника</a>
+<br>
+<form th:method="DELETE" th:action="@{/employees/{id}(id=${employee.getId()})}">
+    <input type="submit" value="Удалить сотрудника">
+</form>
+<a href="/employees">Назад</a>
 </body>
 </html>

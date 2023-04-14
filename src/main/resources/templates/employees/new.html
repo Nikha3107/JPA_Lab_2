@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/employees/new}" th:object="${employee}">
+    <label for="firstName">Имя: </label>
+    <input type="text" id="firstName" th:field="*{firstName}">
+    <br>
+    <label for="lastName">Фамилия: </label>
+    <input type="text" id="lastName" th:field="*{lastName}">
+    <br>
+    <label for="address">Адресс: </label>
+    <input type="text" id="address" th:field="*{address}">
+    <br>
+<!--    <label for="birthday">День рождения: </label>-->
+<!--    <input type="text" id="birthday" th:field="*{birthday}">-->
+<!--    <br>-->
+    <label for="department">Отдел: </label>
+    <select th:object="${employee}" th:field="*{department}" id="department">
+        <option th:each="department : ${departments}"
+                th:value="${department.getId}"
+                th:text="${department.getName}" ></option>
+    </select>
+    <br>
+    <label for="position">Должность: </label>
+    <select th:object="${employee}" th:field="*{position}" id="position">
+        <option th:each="position : ${T(com.example.jpa_lab_2.domain.entity.Position).values()}"
+                th:value="${position}"
+                th:text="${position.displayName}" ></option>
+    </select>
+    <br>
+    <input type="submit" value="Добавить запись о новом работнике">
+</form>
+</body>
+</html>

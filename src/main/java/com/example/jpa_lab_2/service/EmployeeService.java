@@ -1,5 +1,6 @@
 package com.example.jpa_lab_2.service;
 
+import com.example.jpa_lab_2.domain.entity.Department;
 import com.example.jpa_lab_2.domain.entity.Employee;
 
 import java.util.List;
@@ -9,12 +10,16 @@ public interface EmployeeService {
 
     List<Employee> findAll();
 
-    Optional<Employee> findOne(long id);
+    Employee findOne(long id);
+
+    List<Employee> findByDepartment(Department department);
 
     void save(Employee employee);
 
     void update(long id, Employee employee);
 
     void delete(Employee employee);
+
+    void deleteAll(List<Employee> employees);
 
 }
