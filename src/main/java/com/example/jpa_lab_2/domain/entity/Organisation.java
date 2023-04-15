@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -20,5 +22,8 @@ public class Organisation {
     @OneToOne
     @JoinColumn(name = "branch_head_id")
     Employee branchHead;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "organisation")
+    List<Department> departments;
 
 }

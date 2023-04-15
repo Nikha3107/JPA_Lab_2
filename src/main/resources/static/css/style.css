@@ -1,0 +1,147 @@
+/* montserrat-regular - latin_cyrillic */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+    url('../fonts/montserrat-v25-latin_cyrillic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/montserrat-v25-latin_cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* montserrat-500 - latin_cyrillic */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''),
+    url('../fonts/montserrat-v25-latin_cyrillic-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/montserrat-v25-latin_cyrillic-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* montserrat-700 - latin_cyrillic */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+    url('../fonts/montserrat-v25-latin_cyrillic-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/montserrat-v25-latin_cyrillic-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* montserrat-300 - latin_cyrillic */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    src: local(''),
+    url('../fonts/montserrat-v25-latin_cyrillic-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/montserrat-v25-latin_cyrillic-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+html{
+    box-sizing: border-box;
+}
+*,*::before, *::after{
+    box-sizing: inherit;
+}
+body{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: normal;
+    color: #fff;
+}
+.wrapper{
+    padding: 20px;
+    max-width: 1170px;
+    margin: 500px auto;
+    background-color: #242E42;
+    border-radius: 11px;
+    box-shadow: 0px 2px 20px rgba(21, 24, 36, 0.596)
+    /* padding: 0 15px; */
+}
+.header{
+    padding: 15px 0px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.cards{
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1rem;
+}
+.card{
+    padding: 15px;
+    background-color: #2F3B52;
+    border-radius: 10px;
+    max-width: 370px;
+}
+.list{
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    grid-gap: 1rem;
+}
+.list-item{
+    padding: 15px 0;
+    background-color: #2F3B52;
+    border-radius: 10px;
+}
+.link{
+    line-height: 24px;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    font-size: 24px;
+}
+.text{
+    padding: 15px 0 15px 0px;
+    font-size: 20px;
+
+    color: #FFFFFF;
+}
+.button{
+    margin-top: 15px;
+    display: inline-block;
+    background: #8282F7;
+    border-radius: 0.25rem;
+    border: 0;
+    padding: 3px 9px;
+    font-size: 24px;
+    color: #fff;
+}
+.input{
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.input-label{
+    display: block;
+    margin-bottom: 0.25rem;
+}
+.select{
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

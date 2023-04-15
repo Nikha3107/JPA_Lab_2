@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<div th:text="${department.getName()}" />
-<div th:text="${department.getNumOfEmployees()}" />
-<div th:text="${department.getRooms()}" />
-<div th:if="${department.getDepartmentHead() == null}">
-    <p>Начальник отдела не назначен</p>
+<div class="wrapper">
+    <h1 class="header">Employee management system</h1>
+    <div class="text" th:text="'Название: '+${department.getName()}"/>
+    <div class="text" th:text="'Число сотрудников: '+${department.getNumOfEmployees()}"/>
+    <div class="text" th:if="${department.getDepartmentHead() == null}">
+        <p>Начальник отдела не назначен</p>
+    </div>
+    <div class="text" th:if="${department.getDepartmentHead() != null}">
+        Начальник отдела: <a class="link" th:href="@{/employees/{id}(id=${department.getDepartmentHead().getId()}) }" th:text="${department.getDepartmentHead().getFirstName()+' '+department.getDepartmentHead().getLastName()}" />
+    </div>
+    <form th:action="@{/departments/{id}/edit(id=${department.getId()})}">
+        <input class="button" type="submit" value="Редактировать данные об отделе">
+    </form>
+    <form th:method="DELETE" th:action="@{/departments/{id}(id=${department.getId()})}">
+        <input class="button" type="submit" value="Удалить отдел">
+    </form>
+    <button class="button" onclick="window.location.href='/departments'">Назад</button>
 </div>
-<div th:if="${department.getDepartmentHead() != null}">
-    <a th:href="@{/employees/{id}(id=${department.getDepartmentHead().getId()}) }" th:text="${department.getDepartmentHead().getFirstName()+' '+department.getDepartmentHead().getLastName()}" />
-
-</div>
-<br>
-<a th:href="@{/departments/{id}/edit(id=${department.getId()})}">Редактировать данные об отделе</a>
-<br>
-<form th:method="DELETE" th:action="@{/departments/{id}(id=${department.getId()})}">
-    <input type="submit" value="Удалить отдел">
-</form>
-<a href="/departments">Назад</a>
 </body>
 </html>

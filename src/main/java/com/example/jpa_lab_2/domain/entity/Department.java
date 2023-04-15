@@ -1,6 +1,8 @@
 package com.example.jpa_lab_2.domain.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +17,7 @@ public class Department {
     @GeneratedValue
     Long id;
 
+    @NotBlank(message = "Name is mandatory")
     String name;
 
     Integer numOfEmployees = 0;
@@ -27,5 +30,10 @@ public class Department {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
     List<Employee> employees;
+
+    @NotNull(message = "Create organisation")
+    @ManyToOne
+    @JoinColumn(name = "organisation_id")
+    Organisation organisation;
 
 }

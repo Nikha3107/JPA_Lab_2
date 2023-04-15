@@ -2,6 +2,7 @@ package com.example.jpa_lab_2.service;
 
 import com.example.jpa_lab_2.domain.entity.Department;
 import com.example.jpa_lab_2.domain.entity.Employee;
+import com.example.jpa_lab_2.domain.entity.Position;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,8 @@ public interface EmployeeService {
     Employee findOne(long id);
 
     List<Employee> findByDepartment(Department department);
+
+    List<Employee> findByPositionAndDepartment(Position position, Department department);
 
     void save(Employee employee);
 

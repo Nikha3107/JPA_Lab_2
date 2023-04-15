@@ -10,11 +10,11 @@
     <h1 class="header">Employee management system</h1>
     <h1 class="text">Список отделов:</h1>
     <div class="list">
-        <div class="list-item" th:each="department : ${departments}">
-            <a class="link" th:href="@{/departments/{id}(id = ${department.getId()})}" th:text="${department.getName }">department</a>
+        <div class="list-item" th:each="organisation : ${organisations}">
+            <a class="link" th:href="@{/organisations/{id}(id = ${organisation.getId()})}" th:text="${organisation.getName}">organisation</a>
         </div>
     </div>
-    <button class="button" onclick="window.location.href = '/departments/new'">Добавить отдел</button>
+    <button class="button" onclick="window.location.href = '/organisations/new'">Добавить Организацию</button>
     <button class="button" onclick="window.location.href = '/'">Назад</button>
 </div>
 </body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="wrapper">
+    <h1 class="header">Employee management system</h1>
+    <div class="text" th:text="'Название: '+${organisation.getName()}"/>
+    <div class="text" th:text="'Адрес: '+${organisation.getAddress()}"/>
+    <div class="text" th:if="${organisation.getBranchHead() == null}">
+        <p>Начальник организации не назначен</p>
+    </div>
+    <div class="text" th:if="${organisation.getBranchHead() != null}">
+        Начальник организации: <a class="link" th:href="@{/employees/{id}(id=${organisation.getBranchHead().getId()}) }" th:text="${organisation.getBranchHead().getFirstName()+' '+organisation.getBranchHead().getLastName()}" />
+    </div>
+    <form th:action="@{/organisations/{id}/edit(id=${organisation.getId()})}">
+        <input class="button" type="submit" value="Редактировать данные об организации">
+    </form>
+    <form th:method="DELETE" th:action="@{/organisations/{id}(id=${organisation.getId()})}">
+        <input class="button" type="submit" value="Удалить организацию">
+    </form>
+    <button class="button" onclick="window.location.href='/organisations'">Назад</button>
+</div>
+</body>
+</html>

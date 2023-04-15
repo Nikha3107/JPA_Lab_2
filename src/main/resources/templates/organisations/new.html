@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="wrapper">
+    <h1 class="header">Employee management system</h1>
+    <form th:method="POST" th:action="@{/organisations/new}" th:object="${organisation}">
+        <div>
+            <label class="text input-label" for="name">Название организации</label>
+            <input class="input" type="text" id="name" th:field="*{name}">
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+        <div>
+            <label class="text input-label" for="address">Адрес</label>
+            <input class="input" type="text" id="address" th:field="*{address}">
+            <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+        </div>
+        <input class="button" type="submit" value="Добавить запись о новой организации">
+    </form>
+    <button class="button" onclick="window.location.href='/organisations'">Назад</button>
+</div>
+</body>
+</html>

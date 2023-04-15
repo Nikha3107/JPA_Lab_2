@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<div th:each="employee : ${employees}">
-    <a th:href="@{/employees/{id}(id = ${employee.getId()})}" th:text="${employee.getFirstName()+' '+employee.getLastName}">employee</a>
+<div class="wrapper">
+    <h1 class="header">Employee management system</h1>
+    <h1 class="text">Список сотрудников:</h1>
+    <div class="list">
+        <div class="list-item" th:each="employee : ${employees}">
+            <a class="link" th:href="@{/employees/{id}(id = ${employee.getId()})}" th:text="${employee.getFirstName()+' '+employee.getLastName}">employee</a>
+        </div>
+    </div>
+    <button class="button" onclick="window.location.href = '/employees/new'">Добавить Сотрудника</button>
+    <button class="button" onclick="window.location.href = '/'">Назад</button>
 </div>
-<br>
-<hr>
-<a href="/employees/new">Добавить Работника</a>
-<a href="/">Назад</a>
-
-
 </body>
 </html>

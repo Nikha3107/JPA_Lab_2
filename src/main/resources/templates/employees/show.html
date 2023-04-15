@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<div th:text="${employee.getFirstName()+' '+employee.getLastName()}" id="name"/>
-<label for="address" ></label>
-<div th:text="${employee.getAddress()}" id="address"/>
-<!--<a th:href="@{/departments/{id}(id = ${departmentId})}" th:text="${employee.getDepartment().getName()}"></a>-->
-<div th:text="${employee.getBirthday()}" />
-<div th:text="${employee.getPosition().getDisplayName()}" />
-<br>
-<a th:href="@{/employees/{id}/edit(id=${employee.getId()})}">Редактировать данные сотрудника</a>
-<br>
-<form th:method="DELETE" th:action="@{/employees/{id}(id=${employee.getId()})}">
-    <input type="submit" value="Удалить сотрудника">
-</form>
-<a href="/employees">Назад</a>
+<div class="wrapper">
+    <h1 class="header">Employee management system</h1>
+    <div class="text" th:text="'ФИО: '+${employee.getFirstName()+' '+employee.getLastName()}" id="name"/>
+    <div class="text" th:text="'Адрес: '+${employee.getAddress()}" id="address"/>
+    <div class="text">Отдел: <a class="link" th:href="@{/departments/{id}(id = ${departmentId})}" th:text="${employee.getDepartment().getName()}"></a></div>
+    <div class="text" th:if="${employee.birthday == null}" th:text="'День рождения: не задан'"></div>
+    <div class="text" th:if="${employee.birthday != null}" th:text="'День рождения: '+${#dates.format(employee.getBirthday(),'dd-MM-yyyy')}" />
+    <div class="text" th:text="'Должность: '+${employee.getPosition().getDisplayName()}" />
+    <form th:action="@{/employees/{id}/edit(id=${employee.getId()})}">
+        <input class="button" type="submit" value="Редактировать данные сотрудника">
+    </form>
+    <form th:method="DELETE" th:action="@{/employees/{id}(id=${employee.getId()})}">
+        <input class="button" type="submit" value="Удалить сотрудника">
+    </form>
+    <button class="button" onclick="window.location.href='/employees'">Назад</button>
+</div>
 </body>
 </html>

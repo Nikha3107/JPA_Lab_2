@@ -1,12 +1,18 @@
 package com.example.jpa_lab_2.presentation.controllers;
 
 import com.example.jpa_lab_2.domain.entity.Department;
+import com.example.jpa_lab_2.domain.entity.Organisation;
 import com.example.jpa_lab_2.service.DepartmentService;
 import com.example.jpa_lab_2.service.EmployeeService;
+import com.example.jpa_lab_2.service.OrganisationService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/departments")
@@ -14,11 +20,13 @@ public class DepartmentController {
 
     private final EmployeeService employeeService;
     private final DepartmentService departmentService;
+    private final OrganisationService organisationService;
 
     @Autowired
-    public DepartmentController(EmployeeService employeeService, DepartmentService departmentService) {
+    public DepartmentController(EmployeeService employeeService, DepartmentService departmentService, OrganisationService organisationService) {
         this.employeeService = employeeService;
         this.departmentService = departmentService;
+        this.organisationService = organisationService;
     }
 
     @GetMapping()
@@ -48,13 +56,23 @@ public class DepartmentController {
     }
 
     @PostMapping("/new")
-    public String create(@ModelAttribute("department") Department department) {
+    public String create(@ModelAttribute("department") @Valid Department department, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "departments/new";
+        }
+
         departmentService.save(department);
         return "redirect:/departments";
     }
 
     @PatchMapping("/{id}/edit")
-    public String update(@ModelAttribute("employee") Department department, @PathVariable("id") long id) {
+    public String update(@ModelAttribute("employee") @Valid Department department, BindingResult bindingResult, @PathVariable("id") long id) {
+
+        if (bindingResult.hasErrors()) {
+            return "departments/edit";
+        }
+
         departmentService.update(id,department);
         return "redirect:/departments";
     }
@@ -63,6 +81,11 @@ public class DepartmentController {
         employeeService.deleteAll(employeeService.findByDepartment(departmentService.findOne(id)));
         departmentService.delete(departmentService.findOne(id));
         return "redirect:/departments";
+    }
+
+    @ModelAttribute("organisations")
+    public List<Organisation> commonData() {
+        return organisationService.findAll();
     }
 
 }

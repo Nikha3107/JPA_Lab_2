@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrganisationServiceImpl implements OrganisationService {
@@ -16,26 +17,28 @@ public class OrganisationServiceImpl implements OrganisationService {
 
     @Override
     public List<Organisation> findAll() {
-        return null;
+        return organisationRepository.findAll();
     }
 
     @Override
     public Organisation findOne(long id) {
-        return null;
+        Optional<Organisation> foundOrganisation = organisationRepository.findById(id);
+        return foundOrganisation.orElse(null);
     }
 
     @Override
     public void save(Organisation organisation) {
-
+        organisationRepository.save(organisation);
     }
 
     @Override
     public void update(long id, Organisation organisation) {
-
+        organisation.setId(id);
+        save(organisation);
     }
 
     @Override
     public void delete(Organisation organisation) {
-
+        organisationRepository.delete(organisation);
     }
 }

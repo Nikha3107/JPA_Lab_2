@@ -33,11 +33,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public List<Employee> findByPositionAndDepartment(Position position, Department department) {
+        return employeeRepository.findEmployeesByPositionAndDepartment(position,department);
+    }
+
+    @Override
     public void save(Employee employee) {
         Department department = employee.getDepartment();
         department.setNumOfEmployees(department.getNumOfEmployees()+1);
-        if (employee.getPosition().equals(Position.HEAD)) {
+        if (employee.getPosition().equals(Position.DEPARTMENT_HEAD)) {
             department.setDepartmentHead(employee);
+        }
+        if (employee.getPosition().equals(Position.BRANCH_HEAD)) {
+            department.getOrganisation().setBranchHead(employee);
         }
         employeeRepository.save(employee);
     }
@@ -45,8 +53,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void update(long id, Employee updatedEmployee) {
         updatedEmployee.setId(id);
-        if (updatedEmployee.getPosition().equals(Position.HEAD)) {
+        Department department = updatedEmployee.getDepartment();
+        if (updatedEmployee.getPosition().equals(Position.DEPARTMENT_HEAD)) {
             updatedEmployee.getDepartment().setDepartmentHead(updatedEmployee);
+        }
+        if (updatedEmployee.getPosition().equals(Position.BRANCH_HEAD)) {
+            department.getOrganisation().setBranchHead(updatedEmployee);
         }
         employeeRepository.save(updatedEmployee);
     }
@@ -55,8 +67,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void delete(Employee employee) {
         Department department = employee.getDepartment();
         department.setNumOfEmployees(department.getNumOfEmployees()-1);
-        if (employee.getPosition().equals(Position.HEAD)) {
+        if (employee.getPosition().equals(Position.DEPARTMENT_HEAD)) {
             department.setDepartmentHead(null);
+        }
+        if (employee.getPosition().equals(Position.BRANCH_HEAD)) {
+            department.getOrganisation().setBranchHead(null);
         }
         employeeRepository.delete(employee);
     }
@@ -66,8 +81,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         employees.forEach(employee -> {
             Department department = employee.getDepartment();
             department.setNumOfEmployees(department.getNumOfEmployees()-1);
-            if (employee.getPosition().equals(Position.HEAD)) {
+            if (employee.getPosition().equals(Position.DEPARTMENT_HEAD)) {
                 department.setDepartmentHead(null);
+            }
+            if (employee.getPosition().equals(Position.BRANCH_HEAD)) {
+                department.getOrganisation().setBranchHead(null);
             }
         });
         employeeRepository.deleteAll(employees);
