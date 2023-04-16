@@ -1,6 +1,7 @@
 package com.example.jpa_lab_2.domain.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,8 +16,10 @@ public class Organisation {
     @GeneratedValue
     Long id;
 
+    @NotBlank(message = "Name is mandatory")
     String name;
 
+    @NotBlank(message = "Address is mandatory")
     String address;
 
     @OneToOne
