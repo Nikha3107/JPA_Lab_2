@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  lab2:
+    build:
+      context: .
+    ports:
+      - "80:8081"
+    depends_on:
+      - postgres
+    networks:
+      - spring-postgres
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=lab
+    networks:
+      - spring-postgres
+networks:
+  spring-postgres:

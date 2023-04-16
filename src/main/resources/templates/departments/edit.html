@@ -15,6 +15,9 @@
                 <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
             </div>
             <div>
+                <input type="hidden" th:field="*{numOfEmployees}">
+            </div>
+            <div>
                 <label class="text input-label" for="organisation">Организация</label>
                 <select class="select" th:object="${department}" th:field="*{organisation}" id="organisation">
                     <option th:each="organisation : ${organisations}"
@@ -27,6 +30,9 @@
                 <label class="text input-label" for="rooms">Список комнат</label>
                 <input class="input" type="text" id="rooms" th:field="*{rooms}">
                 <div th:if="${#fields.hasErrors('rooms')}" th:errors="*{rooms}"></div>
+            </div>
+            <div>
+                <input type="hidden" th:field="*{departmentHead}">
             </div>
             <input class="button" type="submit" value="Изменить запись об отделе">
         </form>

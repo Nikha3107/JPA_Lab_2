@@ -10,26 +10,26 @@
     <h1 class="header">Employee management system</h1>
     <form th:method="PATCH" th:action="@{/employees/{id}/edit(id=${employee.getId()})}" th:object="${employee}">
         <div>
-            <label class="text input-label" for="firstName">Имя: </label>
+            <label class="text input-label" for="firstName">Имя</label>
             <input class="input" type="text" id="firstName" th:field="*{firstName}">
             <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
         </div>
         <div>
-            <label class="text input-label" for="lastName">Фамилия: </label>
+            <label class="text input-label" for="lastName">Фамилия</label>
             <input class="input" type="text" id="lastName" th:field="*{lastName}">
             <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
         </div>
         <div>
-            <label class="text input-label" for="birthday">День рождения: </label>
+            <label class="text input-label" for="birthday">День рождения</label>
             <input class="input" type="date" id="birthday" th:attr="max=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" th:field="${employee.birthday}">
         </div>
         <div>
-            <label class="text input-label" for="address">Адресс: </label>
+            <label class="text input-label" for="address">Адресс</label>
             <input class="input" type="text" id="address" th:field="*{address}">
             <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
         </div>
         <div>
-            <label class="text input-label" for="department">Отдел: </label>
+            <label class="text input-label" for="department">Отдел</label>
             <select class="select" th:object="${employee}" th:field="*{department}" id="department">
                 <option th:each="department : ${departments}"
                         th:value="${department.getId}"
@@ -38,7 +38,7 @@
             <div th:if="${#fields.hasErrors('department')}" th:errors="*{department}"></div>
         </div>
         <div>
-            <label class="text input-label" for="position">Должность: </label>
+            <label class="text input-label" for="position">Должность</label>
             <select class="select" th:object="${employee}" th:field="*{position}" id="position">
                 <option th:each="position : ${T(com.example.jpa_lab_2.domain.entity.Position).values()}"
                         th:value="${position}"
@@ -48,6 +48,7 @@
         </div>
         <input class="button" type="submit" value="Изменить данные о сотруднике">
     </form>
+    <button class="button" onclick="window.location.href='/employees'">Назад</button>
 </div>
 </body>
 </html>

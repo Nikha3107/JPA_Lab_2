@@ -5,10 +5,12 @@ import com.example.jpa_lab_2.domain.entity.Organisation;
 import com.example.jpa_lab_2.domain.repository.OrganisationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional(readOnly = true)
 @Service
 public class OrganisationServiceImpl implements OrganisationService {
 
@@ -26,17 +28,20 @@ public class OrganisationServiceImpl implements OrganisationService {
         return foundOrganisation.orElse(null);
     }
 
+    @Transactional
     @Override
     public void save(Organisation organisation) {
         organisationRepository.save(organisation);
     }
 
+    @Transactional
     @Override
     public void update(long id, Organisation organisation) {
         organisation.setId(id);
         save(organisation);
     }
 
+    @Transactional
     @Override
     public void delete(Organisation organisation) {
         organisationRepository.delete(organisation);

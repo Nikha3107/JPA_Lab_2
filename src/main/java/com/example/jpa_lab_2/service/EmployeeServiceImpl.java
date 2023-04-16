@@ -6,10 +6,12 @@ import com.example.jpa_lab_2.domain.entity.Position;
 import com.example.jpa_lab_2.domain.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional(readOnly = true)
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -37,6 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findEmployeesByPositionAndDepartment(position,department);
     }
 
+    @Transactional
     @Override
     public void save(Employee employee) {
         Department department = employee.getDepartment();
@@ -50,6 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.save(employee);
     }
 
+    @Transactional
     @Override
     public void update(long id, Employee updatedEmployee) {
         updatedEmployee.setId(id);
@@ -63,6 +67,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.save(updatedEmployee);
     }
 
+    @Transactional
     @Override
     public void delete(Employee employee) {
         Department department = employee.getDepartment();
@@ -76,6 +81,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.delete(employee);
     }
 
+    @Transactional
     @Override
     public void deleteAll(List<Employee> employees) {
         employees.forEach(employee -> {

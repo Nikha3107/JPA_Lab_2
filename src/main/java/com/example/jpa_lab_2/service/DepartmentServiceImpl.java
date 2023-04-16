@@ -6,10 +6,12 @@ import com.example.jpa_lab_2.domain.entity.Organisation;
 import com.example.jpa_lab_2.domain.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional(readOnly = true)
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
@@ -33,22 +35,28 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentRepository.findDepartmentByOrganisation(organisation);
     }
 
+    @Transactional
     @Override
     public void save(Department department) {
         departmentRepository.save(department);
     }
 
+    @Transactional
     @Override
     public void update(long id, Department updatedDepartment) {
+        departmentRepository.existsById(id);
+        departmentRepository.findById(id);
         updatedDepartment.setId(id);
         departmentRepository.save(updatedDepartment);
     }
 
+    @Transactional
     @Override
     public void delete(Department department) {
         departmentRepository.delete(department);
     }
 
+    @Transactional
     @Override
     public void deleteAll(List<Department> departments) {
         departmentRepository.deleteAll(departments);

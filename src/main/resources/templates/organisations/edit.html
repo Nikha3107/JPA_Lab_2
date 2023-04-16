@@ -19,6 +19,9 @@
                 <input class="input" type="text" id="address" th:field="*{address}">
                 <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
             </div>
+            <div>
+                <input type="hidden" th:field="*{branchHead}">
+            </div>
             <input class="button" type="submit" value="Изменить запись об организации">
         </form>
         <button class="button" onclick="window.location.href='/organisations'">Назад</button>

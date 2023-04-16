@@ -67,7 +67,7 @@ public class DepartmentController {
     }
 
     @PatchMapping("/{id}/edit")
-    public String update(@ModelAttribute("employee") @Valid Department department, BindingResult bindingResult, @PathVariable("id") long id) {
+    public String update(@ModelAttribute("department") @Valid Department department, BindingResult bindingResult, @PathVariable("id") long id) {
 
         if (bindingResult.hasErrors()) {
             return "departments/edit";
